@@ -1,0 +1,25 @@
+---
+title: "raster_graphs"
+output: html_document
+---
+
+## raster_graphs begins the same as BRT_Adriana.Rmd in DEVELOP_SC ##
+
+## Load Libraries ##
+```{r}
+library(rgdal)
+library(raster)
+library(tidyverse)
+```
+
+## plotting all seven bands into one image
+```{r}
+bands <- raster("UVVR_Landsat_Bands.tif", band=7)
+bands <- setMinMax(bands)
+plot(bands)
+```
+#plotting all seven bands into separate images
+```{r}
+allbands <- stack("UVVR_Landsat_Bands.tif")
+allbands <- setMinMax(allbands)
+plot(allbands)
